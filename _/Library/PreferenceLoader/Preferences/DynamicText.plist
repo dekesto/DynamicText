@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = DynamicText;
+	cell = PSLinkCell;
+	detail = DynamicTextListController;
+	icon = DynamicText.png;
+	isController = 1;
+	label = DynamicText;
+    };
+}

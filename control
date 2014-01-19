@@ -1,0 +1,9 @@
+Package: com.dekesto.dynamictext
+Name: DynamicText
+Depends: mobilesubstrate, firmware (>= 7)
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Dynamic Text on iOS 7!
+Maintainer: Dekesto
+Author: Dekesto
+Section: Tweaks
