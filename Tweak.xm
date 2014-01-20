@@ -14,15 +14,21 @@ static NSString* Timetext = nil;
 		NSString* slideText = [NSString stringWithFormat:@"%@, %@!", Timetext, DTtext];
    		[dateFormatter setDateFormat:@"hh:mm:ss"];
 
-   		if ( hour >= 12 && hour < 24 ) { 
+   		if ( hour < 17 ) { 
    	
-       		Timetext = @"Afternoon";
+       			Timetext = @"Afternoon";
     				
-   		} else {
+   		} 
+   		if ( hour >= 17) {
 
-   			Timetext = @"Morning";
+   			Timetext = @"Evening";
     		
-    	}
+    		}
+    		if ( hour < 12) {
+
+    		Timetext = @"Morning";
+
+    		}
 
 		if (DTtext && enableSwitch){
 
