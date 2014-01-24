@@ -131,7 +131,7 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Bon Matin";
+                Timetext = @"Bonjour";
                     
             } 
             if (hour >= 17) {
