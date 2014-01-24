@@ -1,3 +1,4 @@
+
 include theos/makefiles/common.mk
 
 TWEAK_NAME = DynamicText
@@ -8,3 +9,5 @@ include $(THEOS_MAKE_PATH)/tweak.mk
 
 SUBPROJECTS += dynamictext
 include $(THEOS_MAKE_PATH)/aggregate.mk
+
+
