@@ -10,6 +10,7 @@
 		_specifiers = [[self loadSpecifiersFromPlistName:@"DynamicText" target:self] retain];
 	}
 	return _specifiers;
+
 }
 
 - (void)save {

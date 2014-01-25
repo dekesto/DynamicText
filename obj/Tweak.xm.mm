@@ -1,9 +1,16 @@
-%hook SBLockScreenView
+#line 1 "Tweak.xm"
+#include <logos/logos.h>
+#include <substrate.h>
+@class SBFGlintyStringView; @class SBLockScreenView; 
+static void (*_logos_orig$_ungrouped$SBLockScreenView$setCustomSlideToUnlockText$)(SBLockScreenView*, SEL, id); static void _logos_method$_ungrouped$SBLockScreenView$setCustomSlideToUnlockText$(SBLockScreenView*, SEL, id); static void (*_logos_orig$_ungrouped$SBFGlintyStringView$setChevron$)(SBFGlintyStringView*, SEL, id); static void _logos_method$_ungrouped$SBFGlintyStringView$setChevron$(SBFGlintyStringView*, SEL, id); 
+
+#line 1 "Tweak.xm"
+
 
 static NSString* DTtext = nil;
 static NSString* Timetext = nil;
 
- 	-(void)setCustomSlideToUnlockText:(id)arg1 {
+ 	static void _logos_method$_ungrouped$SBLockScreenView$setCustomSlideToUnlockText$(SBLockScreenView* self, SEL _cmd, id arg1) {
 
     	NSDate* today = [NSDate date];
  		  NSCalendar* cal = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
@@ -48,17 +55,17 @@ static NSString* Timetext = nil;
 
               if (hour < 17) { 
     
-                  Timetext = @"Buenos tardes"; //Good afternoon
+                  Timetext = @"Buenos tardes"; 
                     
               } 
               if (hour >= 17) {
 
-                  Timetext = @"Buenas noches"; //Good evening
+                  Timetext = @"Buenas noches"; 
             
               }
               if (hour < 12) {
 
-                  Timetext = @"Buenas días"; //Good morning
+                  Timetext = @"Buenas días"; 
 
               }
 
@@ -66,17 +73,17 @@ static NSString* Timetext = nil;
 
               if (hour < 17) { 
     
-                 Timetext = @"Goedemiddag"; //Good afternoon
+                 Timetext = @"Goedemiddag"; 
                     
               } 
               if (hour >= 17) {
 
-                 Timetext = @"Goedenavond"; //Good evening
+                 Timetext = @"Goedenavond"; 
             
              }
               if (hour < 12) {
 
-                 Timetext = @"Goedemorgen"; //Good morning
+                 Timetext = @"Goedemorgen"; 
              }
 
           } else if ([[lang objectForKey:@"Language"] integerValue] == 3){
@@ -84,17 +91,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Guten Tag"; //Good afternoon
+                Timetext = @"Guten Tag"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Gutten abend"; //Good evening
+                Timetext = @"Gutten abend"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Guten morgen"; //Good morning
+                Timetext = @"Guten morgen"; 
            }
 
         } else if ([[lang objectForKey:@"Language"] integerValue] == 4){
@@ -102,17 +109,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Добър ден"; //Good afternoon
+                Timetext = @"Добър ден"; 
                     
             } 
             if (hour >= 17) {
 
-                 Timetext = @"Добър вечер"; //Good evening
+                 Timetext = @"Добър вечер"; 
             
             }
             if (hour < 12) {
 
-                 Timetext = @"Добро утро"; //Good morning
+                 Timetext = @"Добро утро"; 
            }
 
         } else if ([[lang objectForKey:@"Language"] integerValue] == 5){
@@ -120,17 +127,17 @@ static NSString* Timetext = nil;
 
             if (hour < 17) { 
     
-                Timetext = @"Hyvää iltapäivää"; //Good afternoon
+                Timetext = @"Hyvää iltapäivää"; 
                     
             } 
             if (hour >= 17) {
 
-                 Timetext = @"Hyvää iltaa"; //Good evening
+                 Timetext = @"Hyvää iltaa"; 
             
             }
             if (hour < 12) {
 
-                 Timetext = @"Hyvää huomenta"; //Good morning
+                 Timetext = @"Hyvää huomenta"; 
            }
 
         } else if ([[lang objectForKey:@"Language"] integerValue] == 6){
@@ -138,17 +145,17 @@ static NSString* Timetext = nil;
 
             if (hour < 17) { 
     
-                Timetext = @"Bon après-midi"; //Good afternoon
+                Timetext = @"Bon après-midi"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Bonsoir"; //Good evening
+                Timetext = @"Bonsoir"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Bonjour"; //Good morning
+                Timetext = @"Bonjour"; 
            }
 
         } else if ([[lang objectForKey:@"Language"] integerValue] == 7){
@@ -156,51 +163,51 @@ static NSString* Timetext = nil;
 
             if (hour < 17) { 
     
-                Timetext = @"Bom tarde"; //Good afternoon
+                Timetext = @"Bom tarde"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Boa noite"; //Good evening
+                Timetext = @"Boa noite"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Bom dia"; //Good morning
+                Timetext = @"Bom dia"; 
            }
 
         } else if ([[lang objectForKey:@"Language"] integerValue] == 8){
 
             if (hour < 17) { 
     
-                Timetext = @"Selamat Tengah Hari"; //Good afternoon
+                Timetext = @"Selamat Tengah Hari"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Selamat Petang"; //Good evening
+                Timetext = @"Selamat Petang"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Selamat Pagi"; //Good morning
+                Timetext = @"Selamat Pagi"; 
 
             }
         } else if ([[lang objectForKey:@"Language"] integerValue] == 9){
 
             if (hour < 17) { 
     
-                Timetext = @"צהריים טובים"; //Good afternoon
+                Timetext = @"צהריים טובים"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"ערב טוב"; //Good evening
+                Timetext = @"ערב טוב"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"בוקר טוב"; //Good morning
+                Timetext = @"בוקר טוב"; 
            }
 
         } else if ([[lang objectForKey:@"Language"] integerValue] == 10){
@@ -208,17 +215,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"こんにちは"; //Good afternoon
+                Timetext = @"こんにちは"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"こんばんは"; //Good evening
+                Timetext = @"こんばんは"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"おはよう"; //Good morning
+                Timetext = @"おはよう"; 
 
             } 
         
@@ -227,17 +234,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Καλὸ ἀπόγευμα"; //Good afternoon
+                Timetext = @"Καλὸ ἀπόγευμα"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Καλησπέρα"; //Good evening
+                Timetext = @"Καλησπέρα"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Καλημέρα"; //Good morning
+                Timetext = @"Καλημέρα"; 
 
             }
 
@@ -246,17 +253,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"مساء الخير،"; //Good afternoon
+                Timetext = @"مساء الخير،"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"مساء الخير،"; //Good evening
+                Timetext = @"مساء الخير،"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"صباح الخير،"; //Good morning
+                Timetext = @"صباح الخير،"; 
 
             }
 
@@ -265,17 +272,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"午安"; //Good afternoon
+                Timetext = @"午安"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"晚安"; //Good evening
+                Timetext = @"晚安"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"早安"; //Good morning
+                Timetext = @"早安"; 
 
             }
 
@@ -284,17 +291,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Добрый день"; //Good afternoon
+                Timetext = @"Добрый день"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Добрый вечер"; //Good evening
+                Timetext = @"Добрый вечер"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Доброе утро"; //Good morning
+                Timetext = @"Доброе утро"; 
 
             }
 
@@ -303,17 +310,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"God eftermiddag"; //Good afternoon
+                Timetext = @"God eftermiddag"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"God kväll"; //Good evening
+                Timetext = @"God kväll"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"God morgon"; //Good morning
+                Timetext = @"God morgon"; 
 
             }
 
@@ -322,17 +329,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Dzień dobry"; //Good afternoon
+                Timetext = @"Dzień dobry"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Dobry wieczór"; //Good evening
+                Timetext = @"Dobry wieczór"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Dzień dobry"; //Good morning
+                Timetext = @"Dzień dobry"; 
 
             }
 
@@ -341,17 +348,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"God ettermiddag"; //Good afternoon
+                Timetext = @"God ettermiddag"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"God kveld"; //Good evening
+                Timetext = @"God kveld"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"God morgen"; //Good morning
+                Timetext = @"God morgen"; 
 
             }
 
@@ -360,17 +367,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Buon pomeriggio"; //Good afternoon
+                Timetext = @"Buon pomeriggio"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Buona sera"; //Good evening
+                Timetext = @"Buona sera"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Buongiorno"; //Good morning
+                Timetext = @"Buongiorno"; 
 
             }
 
@@ -379,17 +386,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Xin chào buổi chiều"; //Good afternoon
+                Timetext = @"Xin chào buổi chiều"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Chào buổi tối"; //Good evening
+                Timetext = @"Chào buổi tối"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Chào buổi sáng"; //Good morning
+                Timetext = @"Chào buổi sáng"; 
 
             }
 
@@ -398,17 +405,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Labdien"; //Good afternoon
+                Timetext = @"Labdien"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Labvakar"; //Good evening
+                Timetext = @"Labvakar"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Labrīt"; //Good morning
+                Timetext = @"Labrīt"; 
 
             }
 
@@ -417,17 +424,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"God eftermiddag"; //Good afternoon
+                Timetext = @"God eftermiddag"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"God aften"; //Good evening
+                Timetext = @"God aften"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"God morgen"; //Good morning
+                Timetext = @"God morgen"; 
 
             }
 
@@ -436,17 +443,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Mirëdita"; //Good afternoon
+                Timetext = @"Mirëdita"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Mirëmbrëma"; //Good evening
+                Timetext = @"Mirëmbrëma"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Mirëmëngjesi"; //Good morning
+                Timetext = @"Mirëmëngjesi"; 
  
             }
 
@@ -455,17 +462,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Dobré odpoledne"; //Good afternoon
+                Timetext = @"Dobré odpoledne"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Dobrý večer"; //Good evening
+                Timetext = @"Dobrý večer"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Dobré ráno"; //Good morning
+                Timetext = @"Dobré ráno"; 
 
             }
 
@@ -474,17 +481,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Szép napot"; //Good afternoon
+                Timetext = @"Szép napot"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Szép estét"; //Good evening
+                Timetext = @"Szép estét"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Jó reggelt"; //Good morning
+                Timetext = @"Jó reggelt"; 
 
             }
 
@@ -493,17 +500,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Magandang hapon po"; //Good afternoon
+                Timetext = @"Magandang hapon po"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Magandang gabi po"; //Good evening
+                Timetext = @"Magandang gabi po"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Magandang umaga po"; //Good morning
+                Timetext = @"Magandang umaga po"; 
 
             }
 
@@ -512,17 +519,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"Boa Tarde"; //Good afternoon
+                Timetext = @"Boa Tarde"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Boa Noite"; //Good evening
+                Timetext = @"Boa Noite"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Bom Dia"; //Good morning
+                Timetext = @"Bom Dia"; 
 
             }
 
@@ -531,17 +538,17 @@ static NSString* Timetext = nil;
 
            if (hour < 17) { 
     
-                Timetext = @"İyi Günler"; //Good afternoon
+                Timetext = @"İyi Günler"; 
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"İyi Akşamlar"; //Good evening
+                Timetext = @"İyi Akşamlar"; 
             
             }
             if (hour < 12) {
 
-                Timetext = @"Günaydın"; //Good morning
+                Timetext = @"Günaydın"; 
 
             }
 
@@ -596,15 +603,15 @@ static NSString* Timetext = nil;
       }
 
 
- 		%orig(arg1);
+ 		_logos_orig$_ungrouped$SBLockScreenView$setCustomSlideToUnlockText$(self, _cmd, arg1);
 
   }
-%end
 
-//Hides the Chevron (Slide Arrow) on Lockscreen
-%hook SBFGlintyStringView
 
-	-(void)setChevron:(id)arg1 {
+
+
+
+	static void _logos_method$_ungrouped$SBFGlintyStringView$setChevron$(SBFGlintyStringView* self, SEL _cmd, id arg1) {
 
 	NSDictionary *prefs = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
  	 		if ([[prefs objectForKey:@"chevronSwitch"] boolValue]) {
@@ -613,7 +620,10 @@ static NSString* Timetext = nil;
 			
 		}
 		
-		return %orig;
+		return _logos_orig$_ungrouped$SBFGlintyStringView$setChevron$(self, _cmd, arg1);
 	}
 
-%end
+
+static __attribute__((constructor)) void _logosLocalInit() {
+{Class _logos_class$_ungrouped$SBLockScreenView = objc_getClass("SBLockScreenView"); MSHookMessageEx(_logos_class$_ungrouped$SBLockScreenView, @selector(setCustomSlideToUnlockText:), (IMP)&_logos_method$_ungrouped$SBLockScreenView$setCustomSlideToUnlockText$, (IMP*)&_logos_orig$_ungrouped$SBLockScreenView$setCustomSlideToUnlockText$);Class _logos_class$_ungrouped$SBFGlintyStringView = objc_getClass("SBFGlintyStringView"); MSHookMessageEx(_logos_class$_ungrouped$SBFGlintyStringView, @selector(setChevron:), (IMP)&_logos_method$_ungrouped$SBFGlintyStringView$setChevron$, (IMP*)&_logos_orig$_ungrouped$SBFGlintyStringView$setChevron$);} }
+#line 620 "Tweak.xm"

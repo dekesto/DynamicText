@@ -7,8 +7,6 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>footerText</key>
-			<string>Changes LockScreen text depending on the time. "Afternoon, Dekesto!"</string>
 			<key>label</key>
 			<string>Slide To Unlock</string>
 		</dict>
@@ -25,6 +23,134 @@
 			<string>enableSwitch</string>
 			<key>label</key>
 			<string>Enable</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>key</key>
+			<string>vulgarSwitch</string>
+			<key>label</key>
+			<string>Vulgar Mode</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext.settingsChanged</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>Language</string>
+			<key>label</key>
+			<string>Select Language</string>
+			<key>validTitles</key>
+			<array>
+				<string>English</string>
+				<string>Español</string>
+				<string>Nederlands</string>
+				<string>Deutsch</string>
+				<string>Bulgarian</string>
+				<string>Finnish</string>
+				<string>French</string>
+				<string>Português PT-BR</string>
+				<string>Malay</string>
+				<string>עברית</string>
+				<string>日本語</string>
+				<string>ελληνικά</string>
+				<string>العربي</string>
+				<string>中文</string>
+				<string>русский</string>
+				<string>Svenska</string>
+				<string>polski</string>
+				<string>Norsk</string>
+				<string>Italiano</string>
+				<string>Việt</string>
+				<string>Latvijas</string>
+				<string>Dansk</string>
+				<string>Shqip</string>
+				<string>čeština</string>
+				<string>magyar</string>
+				<string>Pilipino</string>
+				<string>Português (PT-PT)</string>
+				<string>Türk</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+				<integer>12</integer>
+				<integer>13</integer>
+				<integer>14</integer>
+				<integer>15</integer>
+				<integer>16</integer>
+				<integer>17</integer>
+				<integer>18</integer>
+				<integer>19</integer>
+				<integer>20</integer>
+				<integer>21</integer>
+				<integer>22</integer>
+				<integer>23</integer>
+				<integer>24</integer>
+				<integer>25</integer>
+				<integer>26</integer>
+				<integer>27</integer>
+			</array>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>Save is only needed when changing your name.</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>key</key>
+			<string>chevronSwitch</string>
+			<key>label</key>
+			<string>Hide Chevron</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>key</key>
+			<string>punctSwitch</string>
+			<key>label</key>
+			<string>Hide Punctuation</string>
 		</dict>
 		<dict>
 			<key>PostNotification</key>
@@ -52,18 +178,104 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
-			<string></string>
+			<string>About</string>
 		</dict>
 		<dict>
 			<key>action</key>
 			<string>twitter</string>
+			<key>alignment</key>
+			<string>center</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
 			<key>label</key>
-			<string>Twitter: @Dekesto</string>
+			<string>@Dekesto</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext.settingsChanged</string>
+			<key>alignment</key>
+			<string>center</string>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>detail</key>
+			<string>PSListItemsController</string>
+			<key>key</key>
+			<string>Contribute</string>
+			<key>label</key>
+			<string>Contributors</string>
+			<key>validTitles</key>
+			<array>
+				<string>@CPDigiDarkroom (arm64 Support)</string>
+				<string>@Tavi_Toya (Vulgar Mode)</string>
+				<string>Kristian (Español, Bulgarian)</string>
+				<string>@jeffhuys (Nederlands)</string>
+				<string>@TomLube (Deutsch)</string>
+				<string>@Dryable (Finnish)</string>
+				<string>@Labwis (French)</string>
+				<string>@MrLignelli (Português PT-BR)</string>
+				<string>@ZombieAndroid (Português PT-BR)</string>
+				<string>@redzrex (Malay)</string>
+				<string>@bendeese (日本語)</string>
+				<string>@esaelpffokcuf (עברית)</string>
+				<string>@derekschinke (ελληνικά)</string>
+				<string>/r/wwahwah (العربي)</string>
+				<string>@yucheng33 (中文)</string>
+				<string>/r/TheOneManWolfPack (русский)</string>
+				<string>@ludvigerikss0n (Svenska)</string>
+				<string>/r/Fr33c3l (polski)</string>
+				<string>@lmrisdal (Norsk)</string>
+				<string>/r/hvpd23 (Italiano)</string>
+				<string>/r/eDOTiQ (Việt)</string>
+				<string>/r/Valteritis (Latvijas)</string>
+				<string>@FR3QU3NCYY (Dansk)</string>
+				<string>@ShkumbinM (Shqip)</string>
+				<string>/r/czebrda (čeština)</string>
+				<string>/r/nyuqq (magyar)</string>
+				<string>/r/loveengineer (Pilipino)</string>
+				<string>@joaozinhobrutal (Português (PT-PT))</string>
+				<string>@el_iz_ (Türk)</string>
+			</array>
+			<key>validValues</key>
+			<array>
+				<integer>0</integer>
+				<integer>1</integer>
+				<integer>2</integer>
+				<integer>3</integer>
+				<integer>4</integer>
+				<integer>5</integer>
+				<integer>6</integer>
+				<integer>7</integer>
+				<integer>8</integer>
+				<integer>9</integer>
+				<integer>10</integer>
+				<integer>11</integer>
+				<integer>12</integer>
+				<integer>13</integer>
+				<integer>14</integer>
+				<integer>15</integer>
+				<integer>16</integer>
+				<integer>17</integer>
+				<integer>18</integer>
+				<integer>19</integer>
+				<integer>20</integer>
+				<integer>21</integer>
+				<integer>22</integer>
+				<integer>23</integer>
+				<integer>24</integer>
+				<integer>25</integer>
+				<integer>26</integer>
+				<integer>27</integer>
+				<integer>28</integer>
+			</array>
 		</dict>
 	</array>
 	<key>title</key>
-	<string>Dynamic Text</string>
+	<string>Options</string>
 </dict>
 </plist>
