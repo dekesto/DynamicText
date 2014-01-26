@@ -1,6 +1,6 @@
 %hook SBLockScreenView
-
-static NSString* DTtext = nil;
+static BOOL enableSwitch = YES;
+static NSString* DTtext = @"User";
 static NSString* Timetext = nil;
 
  	-(void)setCustomSlideToUnlockText:(id)arg1 {
@@ -12,19 +12,14 @@ static NSString* Timetext = nil;
  		  NSDateFormatter* dateFormatter=[[NSDateFormatter alloc]init];
  		  NSString* slideText = [NSString stringWithFormat:@"%@, %@.", Timetext, DTtext];
       NSString* noPunct = [NSString stringWithFormat:@"%@ %@", Timetext, DTtext];
-      NSString* japaneseLang = [NSString stringWithFormat:@"%@、%@さん", Timetext, DTtext];
+      NSString* japaneseLang = [NSString stringWithFormat:@"%@、%@。", Timetext, DTtext];
       NSString* arabicLang = [NSString stringWithFormat:@"%@ %@.", Timetext, DTtext];
    		[dateFormatter setDateFormat:@"hh:mm:ss"];
 
       NSDictionary *lang = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
-      NSDictionary *vulgar = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
-      NSDictionary *enable = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
-      NSMutableDictionary *name = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
+         
 
-      if ([[enable objectForKey:@"enableSwitch"] boolValue]) {
-
-          DTtext = ([name objectForKey:@"DTtext"] ? [name objectForKey:@"DTtext"] : DTtext);
-
+      if (DTtext && enableSwitch) {
 
           if ([[lang objectForKey:@"Language"] integerValue] == 0) {
 
@@ -48,7 +43,7 @@ static NSString* Timetext = nil;
 
               if (hour < 17) { 
     
-                  Timetext = @"Buenos tardes"; //Good afternoon
+                  Timetext = @"Buenas tardes"; //Good afternoon
                     
               } 
               if (hour >= 17) {
@@ -58,7 +53,7 @@ static NSString* Timetext = nil;
               }
               if (hour < 12) {
 
-                  Timetext = @"Buenas días"; //Good morning
+                  Timetext = @"Buenos días"; //Good morning
 
               }
 
@@ -89,12 +84,12 @@ static NSString* Timetext = nil;
             } 
             if (hour >= 17) {
 
-                Timetext = @"Gutten abend"; //Good evening
+                Timetext = @"Gutten Abend"; //Good evening
             
             }
             if (hour < 12) {
 
-                Timetext = @"Guten morgen"; //Good morning
+                Timetext = @"Guten Morgen"; //Good morning
            }
 
         } else if ([[lang objectForKey:@"Language"] integerValue] == 4){
@@ -545,8 +540,9 @@ static NSString* Timetext = nil;
 
             }
 
-          }
+          } 
 
+          NSDictionary *vulgar = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
           if ([[vulgar objectForKey:@"vulgarSwitch"] boolValue]) {
 
                if (hour < 17) { 
@@ -565,40 +561,37 @@ static NSString* Timetext = nil;
 
               }
 
-            }
+          }
 
-            if ([[lang objectForKey:@"Language"] integerValue] == 10) {
 
-                arg1 = japaneseLang;
-            }
-
-             if ([[lang objectForKey:@"Language"] integerValue] == 12) {
-
-                arg1 = arabicLang;
-            }
-
-            [DTtext retain];
-            [lang release];
-            [vulgar release];
-            [enable release];  
-
-            arg1 = slideText;
+          arg1 = slideText;
     
-  }
+      }
 
+      if (enableSwitch){
 
+        if ([[lang objectForKey:@"Language"] integerValue] == 10) {
 
-         NSDictionary *prefs = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
-        if ([[prefs objectForKey:@"punctSwitch"] boolValue]) {
+              arg1 = japaneseLang;
+          }
+
+          if ([[lang objectForKey:@"Language"] integerValue] == 12) {
+
+              arg1 = arabicLang;
+          }
+          NSDictionary *noPunctuation = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
+          if ([[noPunctuation objectForKey:@"punctSwitch"] boolValue]) {
 
              arg1 = noPunct;
 
-      }
+          }
+
+      } 
 
 
  		%orig(arg1);
 
-  }
+}
 %end
 
 //Hides the Chevron (Slide Arrow) on Lockscreen
@@ -617,3 +610,21 @@ static NSString* Timetext = nil;
 	}
 
 %end
+
+static void loadPrefs() {
+
+           NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
+    if(prefs)
+    {
+        enableSwitch = ([prefs objectForKey:@"enableSwitch"] ? [[prefs objectForKey:@"enableSwitch"] boolValue] : enableSwitch);
+        DTtext = ([prefs objectForKey:@"DTtext"] ? [prefs objectForKey:@"DTtext"] : DTtext);
+        [DTtext retain];
+    }
+    [prefs release];
+}
+
+%ctor 
+{
+    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.dekesto.dynamictext/settingschanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
+    loadPrefs();
+}

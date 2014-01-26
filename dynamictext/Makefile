@@ -1,4 +1,4 @@
-
+ARCHS = armv7 armv7s arm64
 include theos/makefiles/common.mk
 
 BUNDLE_NAME = DynamicText
