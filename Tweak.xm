@@ -1,6 +1,10 @@
 %hook SBLockScreenView
+static BOOL customSwitch = NO;
 static BOOL enableSwitch = YES;
 static NSString* DTtext = @"User";
+static NSString* morningText = nil;
+static NSString* afternoonText = nil;
+static NSString* eveningText = nil;
 static NSString* Timetext = nil;
 
  	-(void)setCustomSlideToUnlockText:(id)arg1 {
@@ -16,8 +20,7 @@ static NSString* Timetext = nil;
       NSString* arabicLang = [NSString stringWithFormat:@"%@ %@.", Timetext, DTtext];
    		[dateFormatter setDateFormat:@"hh:mm:ss"];
 
-      NSDictionary *lang = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
-         
+      NSDictionary *lang = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];   
 
       if (DTtext && enableSwitch) {
 
@@ -84,7 +87,7 @@ static NSString* Timetext = nil;
             } 
             if (hour >= 17) {
 
-                Timetext = @"Gutten Abend"; //Good evening
+                Timetext = @"Guten Abend"; //Good evening
             
             }
             if (hour < 12) {
@@ -563,6 +566,51 @@ static NSString* Timetext = nil;
 
           }
 
+           if (morningText && afternoonText && eveningText && customSwitch) {
+
+              if (hour < 17) { 
+    
+                    if ([afternoonText isEqual:@""]){
+
+                      Timetext = @"Good afternoon";
+
+                  } else {
+
+                      Timetext = afternoonText;
+
+                  }
+                    
+              } 
+
+              if (hour >= 17) {
+
+                 if ([eveningText isEqual:@""]){
+
+                      Timetext = @"Good evening";
+
+                  } else {
+
+                      Timetext = eveningText;
+
+                  }
+
+              }
+
+               if (hour < 12) {
+
+                   if ([morningText isEqual:@""]){
+
+                      Timetext = @"Good morning";
+
+                  } else {
+
+                      Timetext = morningText;
+
+                  }
+
+              }
+
+            }
 
           arg1 = slideText;
     
@@ -616,9 +664,17 @@ static void loadPrefs() {
            NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
     if(prefs)
     {
+
+        customSwitch = ([prefs objectForKey:@"customSwitch"] ? [[prefs objectForKey:@"customSwitch"] boolValue] : customSwitch);
         enableSwitch = ([prefs objectForKey:@"enableSwitch"] ? [[prefs objectForKey:@"enableSwitch"] boolValue] : enableSwitch);
         DTtext = ([prefs objectForKey:@"DTtext"] ? [prefs objectForKey:@"DTtext"] : DTtext);
+        morningText = ([prefs objectForKey:@"morningText"] ? [prefs objectForKey:@"morningText"] : morningText);
+        afternoonText = ([prefs objectForKey:@"afternoonText"] ? [prefs objectForKey:@"afternoonText"] : afternoonText);
+        eveningText = ([prefs objectForKey:@"eveningText"] ? [prefs objectForKey:@"eveningText"] : eveningText);
         [DTtext retain];
+        [morningText retain];
+        [afternoonText retain];
+        [eveningText retain];
     }
     [prefs release];
 }

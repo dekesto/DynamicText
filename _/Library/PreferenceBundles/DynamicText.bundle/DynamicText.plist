@@ -40,6 +40,34 @@
 		</dict>
 		<dict>
 			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>key</key>
+			<string>chevronSwitch</string>
+			<key>label</key>
+			<string>Hide Chevron</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>key</key>
+			<string>punctSwitch</string>
+			<key>label</key>
+			<string>Hide Punctuation</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
 			<string>com.dekesto.dynamictext.settingsChanged</string>
 			<key>cell</key>
 			<string>PSLinkListCell</string>
@@ -128,34 +156,6 @@
 			<key>PostNotification</key>
 			<string>com.dekesto.dynamictext/settingschanged</string>
 			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.dekesto.dynamictext</string>
-			<key>key</key>
-			<string>chevronSwitch</string>
-			<key>label</key>
-			<string>Hide Chevron</string>
-		</dict>
-		<dict>
-			<key>PostNotification</key>
-			<string>com.dekesto.dynamictext/settingschanged</string>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.dekesto.dynamictext</string>
-			<key>key</key>
-			<string>punctSwitch</string>
-			<key>label</key>
-			<string>Hide Punctuation</string>
-		</dict>
-		<dict>
-			<key>PostNotification</key>
-			<string>com.dekesto.dynamictext/settingschanged</string>
-			<key>cell</key>
 			<string>PSEditTextCell</string>
 			<key>defaults</key>
 			<string>com.dekesto.dynamictext</string>
@@ -177,6 +177,82 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>Leaving a greeting blank returns it to default.</string>
+			<key>label</key>
+			<string>Custom Greetings</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext/settingschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>key</key>
+			<string>customSwitch</string>
+			<key>label</key>
+			<string>Enable</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext/settingschanged</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>key</key>
+			<string>morningText</string>
+			<key>label</key>
+			<string>Morning:</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext/settingschanged</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>key</key>
+			<string>afternoonText</string>
+			<key>label</key>
+			<string>Afternoon:</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.dekesto.dynamictext/settingschanged</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>defaults</key>
+			<string>com.dekesto.dynamictext</string>
+			<key>key</key>
+			<string>eveningText</string>
+			<key>label</key>
+			<string>Evening:</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>save</string>
+			<key>alignment</key>
+			<string>center</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Confirm</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>About</string>
 		</dict>
@@ -189,12 +265,6 @@
 			<string>PSButtonCell</string>
 			<key>label</key>
 			<string>@Dekesto</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string></string>
 		</dict>
 		<dict>
 			<key>PostNotification</key>
@@ -213,6 +283,9 @@
 			<array>
 				<string>@CPDigiDarkroom (arm64 Support)</string>
 				<string>@Tavi_Toya (Vulgar Mode)</string>
+				<string>@nOBoThERE (Tester)</string>
+				<string>@eddyg_1 (Tester)</string>
+				<string>/u/skyfrostdev (Tester)</string>
 				<string>Kristian (Español, Bulgarian)</string>
 				<string>@jeffhuys (Nederlands)</string>
 				<string>@TomLube (Deutsch)</string>
@@ -272,7 +345,20 @@
 				<integer>26</integer>
 				<integer>27</integer>
 				<integer>28</integer>
+				<integer>29</integer>
+				<integer>30</integer>
+				<integer>31</integer>
 			</array>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>submitTrans</string>
+			<key>alignment</key>
+			<string>center</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Submit Translation</string>
 		</dict>
 	</array>
 	<key>title</key>

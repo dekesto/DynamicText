@@ -1,4 +1,4 @@
-ARCHS = armv7 armv7s arm64
+DynamicText_ARCHS = armv7 arm64
 include theos/makefiles/common.mk
 
 TWEAK_NAME = DynamicText

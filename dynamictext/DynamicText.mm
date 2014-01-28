@@ -25,6 +25,12 @@
 
 }
 
+- (void)submitTrans {
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://docs.google.com/forms/d/1H7zNP-f_APokOkFEt9KLOESuqWATQKjRZg7_0LBR_b0/viewform"]];
+
+}
+
 @end
 
 // vim:ft=objc
