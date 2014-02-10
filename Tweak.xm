@@ -1,645 +1,135 @@
-%hook SBLockScreenView
-static BOOL customSwitch = NO;
+#import <UIKit/UIKit.h>
+
 static BOOL enableSwitch = YES;
+static BOOL vulgarSwitch = NO;
 static NSString* DTtext = @"User";
 static NSString* morningText = nil;
 static NSString* afternoonText = nil;
 static NSString* eveningText = nil;
+//static NSString* nightText = nil;
 static NSString* Timetext = nil;
 
- 	-(void)setCustomSlideToUnlockText:(id)arg1 {
+%hook SBLockScreenView
 
-    	NSDate* today = [NSDate date];
- 		  NSCalendar* cal = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
- 		  NSDateComponents* components = [cal components:(NSHourCalendarUnit) fromDate:today];
- 		  NSInteger hour = [components hour];
- 		  NSDateFormatter* dateFormatter=[[NSDateFormatter alloc]init];
- 		  NSString* slideText = [NSString stringWithFormat:@"%@, %@.", Timetext, DTtext];
-      NSString* noPunct = [NSString stringWithFormat:@"%@ %@", Timetext, DTtext];
-      NSString* japaneseLang = [NSString stringWithFormat:@"%@、%@。", Timetext, DTtext];
-      NSString* arabicLang = [NSString stringWithFormat:@"%@ %@.", Timetext, DTtext];
-   		[dateFormatter setDateFormat:@"hh:mm:ss"];
+  -(void)setCustomSlideToUnlockText:(id)arg1 {
 
-      NSDictionary *lang = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];   
+    NSDate *today = [NSDate date];
+    NSCalendar *cal = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSDateComponents *components = [cal components:(NSHourCalendarUnit) fromDate:today];
+    NSInteger hour = [components hour];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"hh:mm:ss"];
 
-      if (DTtext && enableSwitch) {
+    NSString* slideText = [NSString stringWithFormat:@"%@, %@.", Timetext, DTtext];
+    NSString* noPunct = [NSString stringWithFormat:@"%@ %@", Timetext, DTtext];
 
-          if ([[lang objectForKey:@"Language"] integerValue] == 0) {
+    if (DTtext && enableSwitch) {
 
-              if (hour < 17) {
+        if (hour < 17) {
 
-                  Timetext = @"Good afternoon";
+            Timetext = @"Good afternoon";
 
-              }
-              if (hour >= 17) {
+        }
+        if (hour >= 17) {
 
-                  Timetext = @"Good evening";
+            Timetext = @"Good evening";
 
-              }
-              if (hour < 12) {
+        }
+        if (hour < 12) {
 
-                  Timetext = @"Good morning";
+            Timetext = @"Good morning";
 
-              }
+        }
 
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 1) {
+       // NSDictionary *vulgar = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
+          
+        if (vulgarSwitch) {
 
-              if (hour < 17) { 
+            if (hour < 17) { 
     
-                  Timetext = @"Buenas tardes"; //Good afternoon
-                    
-              } 
-              if (hour >= 17) {
-
-                  Timetext = @"Buenas noches"; //Good evening
-            
-              }
-              if (hour < 12) {
-
-                  Timetext = @"Buenos días"; //Good morning
-
-              }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 2) {
-
-              if (hour < 17) { 
-    
-                 Timetext = @"Goedemiddag"; //Good afternoon
-                    
-              } 
-              if (hour >= 17) {
-
-                 Timetext = @"Goedenavond"; //Good evening
-            
-             }
-              if (hour < 12) {
-
-                 Timetext = @"Goedemorgen"; //Good morning
-             }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 3){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Guten Tag"; //Good afternoon
+                Timetext = @"Good fucking afternoon";
                     
             } 
             if (hour >= 17) {
 
-                Timetext = @"Guten Abend"; //Good evening
+                Timetext = @"Good fucking evening";
             
             }
             if (hour < 12) {
 
-                Timetext = @"Guten Morgen"; //Good morning
-           }
+                Timetext = @"Good fucking morning";
 
-        } else if ([[lang objectForKey:@"Language"] integerValue] == 4){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Добър ден"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                 Timetext = @"Добър вечер"; //Good evening
-            
             }
-            if (hour < 12) {
+        }
 
-                 Timetext = @"Добро утро"; //Good morning
-           }
-
-        } else if ([[lang objectForKey:@"Language"] integerValue] == 5){
+        if (morningText || afternoonText || eveningText) {
 
 
             if (hour < 17) { 
     
-                Timetext = @"Hyvää iltapäivää"; //Good afternoon
+                if ([afternoonText isEqual:@""]){
+
+                    Timetext = @"Good afternoon";
+
+                } else {
+
+                     Timetext = afternoonText;
+
+                }
                     
-            } 
+            }
+
+
             if (hour >= 17) {
 
-                 Timetext = @"Hyvää iltaa"; //Good evening
-            
+                if ([eveningText isEqual:@""]){
+
+                    Timetext = @"Good evening";
+
+                } else {
+
+                    Timetext = eveningText;
+
+                }
+
             }
             if (hour < 12) {
 
-                 Timetext = @"Hyvää huomenta"; //Good morning
-           }
+                if ([morningText isEqual:@""]) {
 
-        } else if ([[lang objectForKey:@"Language"] integerValue] == 6){
+                    Timetext = @"Good morning";
 
+                } else {
 
-            if (hour < 17) { 
+                    Timetext = morningText;
+
+                }
+
+            }
+
+        }
+
+        arg1 = slideText;
+
+    }
+
+    if (enableSwitch){
+
+        NSDictionary *noPunctuation = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
+          
+        if ([[noPunctuation objectForKey:@"punctSwitch"] boolValue]) {
+
+            arg1 = noPunct;
+
+        }
+
+    } 
+
     
-                Timetext = @"Bon après-midi"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
+    %orig(arg1);
 
-                Timetext = @"Bonsoir"; //Good evening
-            
-            }
-            if (hour < 12) {
+  }
 
-                Timetext = @"Bonjour"; //Good morning
-           }
-
-        } else if ([[lang objectForKey:@"Language"] integerValue] == 7){
-
-
-            if (hour < 17) { 
-    
-                Timetext = @"Bom tarde"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Boa noite"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Bom dia"; //Good morning
-           }
-
-        } else if ([[lang objectForKey:@"Language"] integerValue] == 8){
-
-            if (hour < 17) { 
-    
-                Timetext = @"Selamat Tengah Hari"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Selamat Petang"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Selamat Pagi"; //Good morning
-
-            }
-        } else if ([[lang objectForKey:@"Language"] integerValue] == 9){
-
-            if (hour < 17) { 
-    
-                Timetext = @"צהריים טובים"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"ערב טוב"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"בוקר טוב"; //Good morning
-           }
-
-        } else if ([[lang objectForKey:@"Language"] integerValue] == 10){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"こんにちは"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"こんばんは"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"おはよう"; //Good morning
-
-            } 
-        
-        } else if ([[lang objectForKey:@"Language"] integerValue] == 11){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Καλὸ ἀπόγευμα"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Καλησπέρα"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Καλημέρα"; //Good morning
-
-            }
-
-        } else if ([[lang objectForKey:@"Language"] integerValue] == 12){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"مساء الخير،"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"مساء الخير،"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"صباح الخير،"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 13){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"午安"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"晚安"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"早安"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 14){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Добрый день"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Добрый вечер"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Доброе утро"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 15){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"God eftermiddag"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"God kväll"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"God morgon"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 16){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Dzień dobry"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Dobry wieczór"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Dzień dobry"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 17){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"God ettermiddag"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"God kveld"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"God morgen"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 18){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Buon pomeriggio"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Buona sera"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Buongiorno"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 19){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Xin chào buổi chiều"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Chào buổi tối"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Chào buổi sáng"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 20){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Labdien"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Labvakar"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Labrīt"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 21){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"God eftermiddag"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"God aften"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"God morgen"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 22){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Mirëdita"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Mirëmbrëma"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Mirëmëngjesi"; //Good morning
- 
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 23){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Dobré odpoledne"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Dobrý večer"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Dobré ráno"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 24){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Szép napot"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Szép estét"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Jó reggelt"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 25){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Magandang hapon po"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Magandang gabi po"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Magandang umaga po"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 26){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"Boa Tarde"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"Boa Noite"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Bom Dia"; //Good morning
-
-            }
-
-          } else if ([[lang objectForKey:@"Language"] integerValue] == 27){
-
-
-           if (hour < 17) { 
-    
-                Timetext = @"İyi Günler"; //Good afternoon
-                    
-            } 
-            if (hour >= 17) {
-
-                Timetext = @"İyi Akşamlar"; //Good evening
-            
-            }
-            if (hour < 12) {
-
-                Timetext = @"Günaydın"; //Good morning
-
-            }
-
-          } 
-
-          NSDictionary *vulgar = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
-          if ([[vulgar objectForKey:@"vulgarSwitch"] boolValue]) {
-
-               if (hour < 17) { 
-    
-                   Timetext = @"Good fucking afternoon";
-                    
-               } 
-               if (hour >= 17) {
-
-                   Timetext = @"Good fucking evening";
-            
-               }
-               if (hour < 12) {
-
-                   Timetext = @"Good fucking morning";
-
-              }
-
-          }
-
-           if (morningText && afternoonText && eveningText && customSwitch) {
-
-              if (hour < 17) { 
-    
-                    if ([afternoonText isEqual:@""]){
-
-                      Timetext = @"Good afternoon";
-
-                  } else {
-
-                      Timetext = afternoonText;
-
-                  }
-                    
-              } 
-
-              if (hour >= 17) {
-
-                 if ([eveningText isEqual:@""]){
-
-                      Timetext = @"Good evening";
-
-                  } else {
-
-                      Timetext = eveningText;
-
-                  }
-
-              }
-
-               if (hour < 12) {
-
-                   if ([morningText isEqual:@""]){
-
-                      Timetext = @"Good morning";
-
-                  } else {
-
-                      Timetext = morningText;
-
-                  }
-
-              }
-
-            }
-
-          arg1 = slideText;
-    
-      }
-
-      if (enableSwitch){
-
-        if ([[lang objectForKey:@"Language"] integerValue] == 10) {
-
-              arg1 = japaneseLang;
-          }
-
-          if ([[lang objectForKey:@"Language"] integerValue] == 12) {
-
-              arg1 = arabicLang;
-          }
-          NSDictionary *noPunctuation = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
-          if ([[noPunctuation objectForKey:@"punctSwitch"] boolValue]) {
-
-             arg1 = noPunct;
-
-          }
-
-      } 
-
-
- 		%orig(arg1);
-
-}
 %end
 
 //Hides the Chevron (Slide Arrow) on Lockscreen
@@ -647,7 +137,7 @@ static NSString* Timetext = nil;
 
 	-(void)setChevron:(id)arg1 {
 
-	NSDictionary *prefs = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
+	   NSDictionary *prefs = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
  	 		if ([[prefs objectForKey:@"chevronSwitch"] boolValue]) {
 
 			return;
@@ -665,22 +155,28 @@ static void loadPrefs() {
     if(prefs)
     {
 
-        customSwitch = ([prefs objectForKey:@"customSwitch"] ? [[prefs objectForKey:@"customSwitch"] boolValue] : customSwitch);
         enableSwitch = ([prefs objectForKey:@"enableSwitch"] ? [[prefs objectForKey:@"enableSwitch"] boolValue] : enableSwitch);
+        vulgarSwitch = ([prefs objectForKey:@"vulgarSwitch"] ? [[prefs objectForKey:@"vulgarSwitch"] boolValue] : vulgarSwitch);
         DTtext = ([prefs objectForKey:@"DTtext"] ? [prefs objectForKey:@"DTtext"] : DTtext);
         morningText = ([prefs objectForKey:@"morningText"] ? [prefs objectForKey:@"morningText"] : morningText);
         afternoonText = ([prefs objectForKey:@"afternoonText"] ? [prefs objectForKey:@"afternoonText"] : afternoonText);
         eveningText = ([prefs objectForKey:@"eveningText"] ? [prefs objectForKey:@"eveningText"] : eveningText);
+       // nightText = ([prefs objectForKey:@"nightText"] ? [prefs objectForKey:@"nightText"] : nightText);
         [DTtext retain];
         [morningText retain];
         [afternoonText retain];
         [eveningText retain];
+       // [nightText retain];
+
     }
+
     [prefs release];
 }
 
 %ctor 
 {
+
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.dekesto.dynamictext/settingschanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
     loadPrefs();
+
 }

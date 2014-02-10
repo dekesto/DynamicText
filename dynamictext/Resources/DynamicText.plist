@@ -5,12 +5,6 @@
 	<key>items</key>
 	<array>
 		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Slide To Unlock</string>
-		</dict>
-		<dict>
 			<key>PostNotification</key>
 			<string>com.dekesto.dynamictext/settingschanged</string>
 			<key>cell</key>
@@ -19,6 +13,8 @@
 			<true/>
 			<key>defaults</key>
 			<string>com.dekesto.dynamictext</string>
+			<key>icon</key>
+			<string>enable@2x.png</string>
 			<key>key</key>
 			<string>enableSwitch</string>
 			<key>label</key>
@@ -33,6 +29,8 @@
 			<false/>
 			<key>defaults</key>
 			<string>com.dekesto.dynamictext</string>
+			<key>icon</key>
+			<string>vulgar@2x.png</string>
 			<key>key</key>
 			<string>vulgarSwitch</string>
 			<key>label</key>
@@ -47,6 +45,8 @@
 			<false/>
 			<key>defaults</key>
 			<string>com.dekesto.dynamictext</string>
+			<key>icon</key>
+			<string>chevron@2x.png</string>
 			<key>key</key>
 			<string>chevronSwitch</string>
 			<key>label</key>
@@ -61,88 +61,12 @@
 			<false/>
 			<key>defaults</key>
 			<string>com.dekesto.dynamictext</string>
+			<key>icon</key>
+			<string>punct@2x.png</string>
 			<key>key</key>
 			<string>punctSwitch</string>
 			<key>label</key>
 			<string>Hide Punctuation</string>
-		</dict>
-		<dict>
-			<key>PostNotification</key>
-			<string>com.dekesto.dynamictext.settingsChanged</string>
-			<key>cell</key>
-			<string>PSLinkListCell</string>
-			<key>default</key>
-			<integer>0</integer>
-			<key>defaults</key>
-			<string>com.dekesto.dynamictext</string>
-			<key>detail</key>
-			<string>PSListItemsController</string>
-			<key>key</key>
-			<string>Language</string>
-			<key>label</key>
-			<string>Select Language</string>
-			<key>validTitles</key>
-			<array>
-				<string>English</string>
-				<string>Español</string>
-				<string>Nederlands</string>
-				<string>Deutsch</string>
-				<string>Bulgarian</string>
-				<string>Finnish</string>
-				<string>French</string>
-				<string>Português PT-BR</string>
-				<string>Malay</string>
-				<string>עברית</string>
-				<string>日本語</string>
-				<string>ελληνικά</string>
-				<string>العربي</string>
-				<string>中文</string>
-				<string>русский</string>
-				<string>Svenska</string>
-				<string>polski</string>
-				<string>Norsk</string>
-				<string>Italiano</string>
-				<string>Việt</string>
-				<string>Latvijas</string>
-				<string>Dansk</string>
-				<string>Shqip</string>
-				<string>čeština</string>
-				<string>magyar</string>
-				<string>Pilipino</string>
-				<string>Português (PT-PT)</string>
-				<string>Türk</string>
-			</array>
-			<key>validValues</key>
-			<array>
-				<integer>0</integer>
-				<integer>1</integer>
-				<integer>2</integer>
-				<integer>3</integer>
-				<integer>4</integer>
-				<integer>5</integer>
-				<integer>6</integer>
-				<integer>7</integer>
-				<integer>8</integer>
-				<integer>9</integer>
-				<integer>10</integer>
-				<integer>11</integer>
-				<integer>12</integer>
-				<integer>13</integer>
-				<integer>14</integer>
-				<integer>15</integer>
-				<integer>16</integer>
-				<integer>17</integer>
-				<integer>18</integer>
-				<integer>19</integer>
-				<integer>20</integer>
-				<integer>21</integer>
-				<integer>22</integer>
-				<integer>23</integer>
-				<integer>24</integer>
-				<integer>25</integer>
-				<integer>26</integer>
-				<integer>27</integer>
-			</array>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -159,6 +83,8 @@
 			<string>PSEditTextCell</string>
 			<key>defaults</key>
 			<string>com.dekesto.dynamictext</string>
+			<key>icon</key>
+			<string>name@2x.png</string>
 			<key>key</key>
 			<string>DTtext</string>
 			<key>label</key>
@@ -177,142 +103,116 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
-			<key>footerAlignment</key>
-			<integer>1</integer>
-			<key>footerText</key>
-			<string>Leaving a greeting blank returns it to default.</string>
-			<key>label</key>
-			<string>Custom Greetings</string>
-		</dict>
-		<dict>
-			<key>PostNotification</key>
-			<string>com.dekesto.dynamictext/settingschanged</string>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.dekesto.dynamictext</string>
-			<key>key</key>
-			<string>customSwitch</string>
-			<key>label</key>
-			<string>Enable</string>
-		</dict>
-		<dict>
-			<key>PostNotification</key>
-			<string>com.dekesto.dynamictext/settingschanged</string>
-			<key>cell</key>
-			<string>PSEditTextCell</string>
-			<key>defaults</key>
-			<string>com.dekesto.dynamictext</string>
-			<key>key</key>
-			<string>morningText</string>
-			<key>label</key>
-			<string>Morning:</string>
-		</dict>
-		<dict>
-			<key>PostNotification</key>
-			<string>com.dekesto.dynamictext/settingschanged</string>
-			<key>cell</key>
-			<string>PSEditTextCell</string>
-			<key>defaults</key>
-			<string>com.dekesto.dynamictext</string>
-			<key>key</key>
-			<string>afternoonText</string>
-			<key>label</key>
-			<string>Afternoon:</string>
-		</dict>
-		<dict>
-			<key>PostNotification</key>
-			<string>com.dekesto.dynamictext/settingschanged</string>
-			<key>cell</key>
-			<string>PSEditTextCell</string>
-			<key>defaults</key>
-			<string>com.dekesto.dynamictext</string>
-			<key>key</key>
-			<string>eveningText</string>
-			<key>label</key>
-			<string>Evening:</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>save</string>
-			<key>alignment</key>
-			<string>center</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>Confirm</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
 			<key>label</key>
 			<string></string>
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>MorningListController</string>
+			<key>icon</key>
+			<string>morning@2x.png</string>
+			<key>isController</key>
+			<true/>
+			<key>key</key>
+			<string>Morning</string>
+			<key>label</key>
+			<string>Morning Options</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>AfternoonListController</string>
+			<key>icon</key>
+			<string>afternoon@2x.png</string>
+			<key>isController</key>
+			<true/>
+			<key>key</key>
+			<string>Afternoon</string>
+			<key>label</key>
+			<string>Afternoon Options</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>detail</key>
+			<string>EveningListController</string>
+			<key>icon</key>
+			<string>evening@2x.png</string>
+			<key>isController</key>
+			<true/>
+			<key>key</key>
+			<string>Evening</string>
+			<key>label</key>
+			<string>Evening Options</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<string>1</string>
+			<key>footerText</key>
+			<string>Copyright © 2014 Dekesto 1.1.6</string>
 			<key>label</key>
 			<string>About</string>
 		</dict>
 		<dict>
 			<key>action</key>
 			<string>twitter</string>
-			<key>alignment</key>
-			<string>center</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
+			<key>icon</key>
+			<string>twitter@2x.png</string>
 			<key>label</key>
 			<string>@Dekesto</string>
 		</dict>
 		<dict>
-			<key>PostNotification</key>
-			<string>com.dekesto.dynamictext.settingsChanged</string>
-			<key>alignment</key>
-			<string>center</string>
 			<key>cell</key>
 			<string>PSLinkListCell</string>
 			<key>detail</key>
 			<string>PSListItemsController</string>
+			<key>icon</key>
+			<string>contribute@2x.png</string>
 			<key>key</key>
 			<string>Contribute</string>
 			<key>label</key>
 			<string>Contributors</string>
 			<key>validTitles</key>
 			<array>
-				<string>@CPDigiDarkroom (arm64 Support)</string>
-				<string>@Tavi_Toya (Vulgar Mode)</string>
+				<string>@CPDigiDarkroom</string>
+				<string>@Tavi_Toya</string>
 				<string>@nOBoThERE (Tester)</string>
 				<string>@eddyg_1 (Tester)</string>
 				<string>/u/skyfrostdev (Tester)</string>
-				<string>Kristian (Español, Bulgarian)</string>
-				<string>@jeffhuys (Nederlands)</string>
-				<string>@TomLube (Deutsch)</string>
-				<string>@Dryable (Finnish)</string>
-				<string>@Labwis (French)</string>
-				<string>@MrLignelli (Português PT-BR)</string>
-				<string>@ZombieAndroid (Português PT-BR)</string>
-				<string>@redzrex (Malay)</string>
-				<string>@bendeese (日本語)</string>
-				<string>@esaelpffokcuf (עברית)</string>
-				<string>@derekschinke (ελληνικά)</string>
-				<string>/u/wwahwah (العربي)</string>
-				<string>@yucheng33 (中文)</string>
-				<string>/u/TheOneManWolfPack (русский)</string>
-				<string>@ludvigerikss0n (Svenska)</string>
-				<string>/u/Fr33c3l (polski)</string>
-				<string>@lmrisdal (Norsk)</string>
-				<string>/u/hvpd23 (Italiano)</string>
-				<string>/u/eDOTiQ (Việt)</string>
-				<string>/u/Valteritis (Latvijas)</string>
-				<string>@FR3QU3NCYY (Dansk)</string>
-				<string>@ShkumbinM (Shqip)</string>
-				<string>/u/czebrda (čeština)</string>
-				<string>/u/nyuqq (magyar)</string>
-				<string>/u/loveengineer (Pilipino)</string>
-				<string>@joaozinhobrutal (Português (PT-PT))</string>
-				<string>@el_iz_ (Türk)</string>
+				<string>Kristian</string>
+				<string>@jeffhuys</string>
+				<string>@TomLube</string>
+				<string>@Dryable</string>
+				<string>@Labwis</string>
+				<string>@MrLignelli</string>
+				<string>@ZombieAndroid</string>
+				<string>@redzrex</string>
+				<string>@bendeese</string>
+				<string>@esaelpffokcuf</string>
+				<string>@derekschinke</string>
+				<string>/u/wwahwah</string>
+				<string>@yucheng33</string>
+				<string>/u/TheOneManWolfPack</string>
+				<string>@ludvigerikss0n</string>
+				<string>/u/Fr33c3l</string>
+				<string>@lmrisdal</string>
+				<string>/u/hvpd23</string>
+				<string>/u/eDOTiQ</string>
+				<string>/u/Valteritis</string>
+				<string>@FR3QU3NCYY</string>
+				<string>@ShkumbinM</string>
+				<string>/u/czebrda</string>
+				<string>/u/nyuqq</string>
+				<string>/u/loveengineer</string>
+				<string>@joaozinhobrutal</string>
+				<string>@el_iz_</string>
 			</array>
 			<key>validValues</key>
 			<array>
@@ -351,14 +251,38 @@
 			</array>
 		</dict>
 		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>Please consider donating to the links below</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string></string>
+		</dict>
+		<dict>
 			<key>action</key>
-			<string>submitTrans</string>
-			<key>alignment</key>
-			<string>center</string>
+			<string>acs</string>
 			<key>cell</key>
 			<string>PSButtonCell</string>
+			<key>icon</key>
+			<string>acs@2x.png</string>
 			<key>label</key>
-			<string>Submit Translation</string>
+			<string>American Cancer Society</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>aha</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>icon</key>
+			<string>aha@2x.png</string>
+			<key>label</key>
+			<string>American Heart Association</string>
 		</dict>
 	</array>
 	<key>title</key>
