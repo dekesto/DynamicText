@@ -12,17 +12,18 @@ Code Formatting:
 	Here is the most important part of DynamicText, the code, when you are beginning the process 	
 	of cleaning up the code, format it like so:
 
-%hook NameOfHook
 
-    - (void)NameOfInstanceMethod { (Open bracket MUST be on the same line as your instance method)
+	%hook NameOfHook
+
+    	- (void)NameOfInstanceMethod { (Open bracket MUST be on the same line as your instance method)
     
-        Finished code has one blank line above and below at ALL times.
-        See how we keep the one blank line?
+        	Finished code has one blank line above and below at ALL times.
+        	See how we keep the one blank line?
     
-    } (Closing bracket MUST be on the same indent as your instance method.
+    	} (Closing bracket MUST be on the same indent as your instance method.
 
 
-%end
+	%end
 
 
 Your indents MUST be 4 spaces, no more, no less.
