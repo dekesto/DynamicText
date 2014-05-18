@@ -42,18 +42,18 @@ static NSString* Timetext = nil;
         }
 
        // NSDictionary *vulgar = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
-          
+
         if (vulgarSwitch) {
 
-            if (hour < 17) { 
-    
+            if (hour < 17) {
+
                 Timetext = @"Good fucking afternoon";
-                    
-            } 
+
+            }
             if (hour >= 17) {
 
                 Timetext = @"Good fucking evening";
-            
+
             }
             if (hour < 12) {
 
@@ -62,11 +62,11 @@ static NSString* Timetext = nil;
             }
         }
 
-        if (morningText || afternoonText || eveningText) {
+        if (morningText && afternoonText && eveningText) {
 
 
-            if (hour < 17) { 
-    
+            if (hour < 17) {
+
                 if ([afternoonText isEqual:@""]){
 
                     Timetext = @"Good afternoon";
@@ -76,7 +76,7 @@ static NSString* Timetext = nil;
                      Timetext = afternoonText;
 
                 }
-                    
+
             }
 
 
@@ -116,16 +116,16 @@ static NSString* Timetext = nil;
     if (enableSwitch){
 
         NSDictionary *noPunctuation = [[NSDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/com.dekesto.dynamictext.plist"];
-          
+
         if ([[noPunctuation objectForKey:@"punctSwitch"] boolValue]) {
 
             arg1 = noPunct;
 
         }
 
-    } 
+    }
 
-    
+
     %orig(arg1);
 
   }
@@ -141,9 +141,9 @@ static NSString* Timetext = nil;
  	 		if ([[prefs objectForKey:@"chevronSwitch"] boolValue]) {
 
 			return;
-			
+
 		}
-		
+
 		return %orig;
 	}
 
@@ -173,7 +173,7 @@ static void loadPrefs() {
     [prefs release];
 }
 
-%ctor 
+%ctor
 {
 
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("com.dekesto.dynamictext/settingschanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);

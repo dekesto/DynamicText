@@ -154,7 +154,7 @@
 			<key>footerAlignment</key>
 			<string>1</string>
 			<key>footerText</key>
-			<string>Copyright © 2014 Dekesto 1.1.6</string>
+			<string>DynamicText © 2014 Dekesto 1.1.7</string>
 			<key>label</key>
 			<string>About</string>
 		</dict>
@@ -249,40 +249,6 @@
 				<integer>30</integer>
 				<integer>31</integer>
 			</array>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerAlignment</key>
-			<integer>1</integer>
-			<key>footerText</key>
-			<string>Please consider donating to the links below</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>acs</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>icon</key>
-			<string>acs@2x.png</string>
-			<key>label</key>
-			<string>American Cancer Society</string>
-		</dict>
-		<dict>
-			<key>action</key>
-			<string>aha</string>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>icon</key>
-			<string>aha@2x.png</string>
-			<key>label</key>
-			<string>American Heart Association</string>
 		</dict>
 	</array>
 	<key>title</key>
